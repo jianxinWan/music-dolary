@@ -19,7 +19,8 @@
       <!-- <el-aside width="200px">Aside</el-aside> -->
       <el-container>
         <el-main class="maincontain">
-          <router-view />
+          <button @click="test">test</button>
+          <router-view :message="message" :curId="curId" @setSongListInfo="setSongListInfo"></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -34,6 +35,7 @@
         </audio>
       </div>-->
       <!-- 自定义audio -->
+      <!-- <p>{{message}}</p> -->
       <PlayBar></PlayBar>
     </el-footer>
 
@@ -57,6 +59,7 @@
 <script>
 import FindMusic from "./FindMusic";
 import PlayBar from "./PlayBar";
+import SongList from "./SongList";
 export default {
   data() {
     return {
@@ -68,7 +71,9 @@ export default {
       currentUser:
         window.localStorage.getItem("currentuser") === "null"
           ? null
-          : JSON.parse(window.localStorage.getItem("currentuser"))
+          : JSON.parse(window.localStorage.getItem("currentuser")),
+      message: [],
+      curId: ""
     };
   },
   created() {
@@ -76,7 +81,8 @@ export default {
   },
   components: {
     children: FindMusic,
-    PlayBar
+    PlayBar,
+    SongList
   },
   methods: {
     loginPopup() {
@@ -119,6 +125,14 @@ export default {
           console.log(err);
           return this.$message("请求失败");
         });
+    },
+    async setSongListInfo(songIds, curId) {
+      console.log(songIds, curId);
+      this.message = songIds;
+      // console.log(this.message);
+    },
+    test() {
+      alert(this.message);
     }
   }
 };

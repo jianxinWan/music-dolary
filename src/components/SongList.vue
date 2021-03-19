@@ -38,7 +38,7 @@
       <span>播放：{{playlistDetail.playCount}}次</span>
     </div>
     <!-- 点击播放歌曲 -->
-    <el-table :data="songslist" stripe style="width: 100%" @click="clickToPlay">
+    <el-table :data="songslist" stripe style="width: 100%" @row-click="clickToPlay">
       <el-table-column label="序号" width="100" type="index"></el-table-column>
       <el-table-column prop="name" label="标题" width="200"></el-table-column>
       <el-table-column prop="dt" label="时长" width="180"></el-table-column>
@@ -61,7 +61,8 @@ export default {
       songslist: [],
       //传给父组件的具体的行
       rowid: "",
-      oneSong: {} //传给父组件具体的歌
+      //歌单中所有歌曲的id
+      songsIds: []
     };
   },
   watch: {
@@ -91,6 +92,7 @@ export default {
           this.playlistDetail = res.data.playlist;
           this.playlistDetail.trackIds.forEach(item => {
             this.queryIds += item.id + ",";
+            this.songsIds.push(item.id);
           });
           //去掉结尾的逗号
           this.queryIds = this.queryIds.substr(0, this.queryIds.length - 1);
@@ -125,7 +127,8 @@ export default {
     },
     // 点击播放歌曲
     clickToPlay(row) {
-      this.$emit("setSongListInfo", this.oneSong);
+      console.log("点击成功");
+      this.$emit("setSongListInfo", this.songsIds, row.id);
     }
   }
 };

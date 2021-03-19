@@ -10,14 +10,14 @@
     <!-- 播放进度条 -->
     <span>00:00/00:00</span>
     <div style="width:700px;height:60px;margin-left:30px;">
-      <el-slider :format-tooltip="formatTooltip" style="margin-top:10px;"></el-slider>
+      <el-slider style="margin-top:10px;"></el-slider>
     </div>
     <!-- 音量 -->
     <div class="volume">
       <!-- <img src="../../static/img/star.png" /> -->
       <a class="star"></a>
-      <el-slider :format-tooltip="formatTooltip" style="width:120px;"></el-slider>
-    </div>d
+      <el-slider style="width:120px;"></el-slider>
+    </div>
     <audio :src="musicUrl" autoplay id="playMusicAudio"></audio>
   </div>
 </template>

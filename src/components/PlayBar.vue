@@ -14,7 +14,6 @@
     </div>
     <!-- 音量 -->
     <div class="volume">
-      <!-- <img src="../../static/img/star.png" /> -->
       <a class="star"></a>
       <el-slider style="width:120px;"></el-slider>
     </div>
@@ -56,8 +55,8 @@ export default {
   display: block;
   /* background: hotpink; */
 }
-.previous {
-  background-image: url(../../static/img/previous.png);
+/* .previous {
+  background-image: url('@assets/');
   background-size: 100%;
 }
 .playstop {
@@ -71,7 +70,7 @@ export default {
 .star {
   background-image: url(../../static/img/star.png);
   background-size: 100%;
-}
+} */
 .volume {
   width: 250px;
   height: 60px;

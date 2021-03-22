@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-if="currentUser===null">请先登录</p>
+    <p v-if="currentUser === null">请先登录</p>
     <!-- 我的音乐 -->
     <div v-else class="mymusic">
       <!-- 需要实现：
@@ -13,18 +13,22 @@
           <el-menu-item-group>
             <template slot="title">创建的歌单</template>
             <el-menu-item
-              v-for="(item,index) in userPrivateSonglist"
+              v-for="(item, index) in userPrivateSonglist"
               :key="index"
-              :index="'/songlist/'+item.id"
-            >{{item.name}}</el-menu-item>
+              :index="'/songlist/' + item.id"
+            >
+              {{ item.name }}
+            </el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group>
             <template slot="title">创建的歌单</template>
             <el-menu-item
-              v-for="(item,index) in userStarSonglist"
+              v-for="(item, index) in userStarSonglist"
               :key="index"
-              :index="'/songlist/'+item.id"
-            >{{item.name}}</el-menu-item>
+              :index="'/songlist/' + item.id"
+            >
+              {{ item.name }}
+            </el-menu-item>
           </el-menu-item-group>
           <!-- </el-submenu> -->
         </el-menu>
